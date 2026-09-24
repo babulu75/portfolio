@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Babulu Digamarti - Software Developer skilled in Java, Python, TypeScript, React, FastAPI, Selenium, and AI systems.">
+    <title>Babulu Digamarti | Software Developer & Full Stack Architect</title>
+    <!-- Google Fonts for crisp modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Persistent Header Navigation (Hidden on initial opening screen, appears smoothly on scroll) -->
+    <header id="main-header" class="nav-hidden">
+        <a href="#opening-screen" class="logo">
+            <h1>Babulu <span>Digamarti</span></h1>
+        </a>
+        <nav id="desktop-nav">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="menu-icon" id="menu-btn" aria-label="Open Navigation Menu">&#9776;</div> <!-- hamburger icon -->
+
+        <div class="overlay" id="overlay">
+            <div class="close-overlay" id="close-overlay-btn">&times;</div>
+            <a href="#home" class="overlay-link">Home</a>
+            <a href="#about" class="overlay-link">About</a>
+            <a href="#skills" class="overlay-link">Skills</a>
+            <a href="#experience" class="overlay-link">Experience</a>
+            <a href="#projects" class="overlay-link">Projects</a>
+            <a href="#education" class="overlay-link">Education</a>
+            <a href="#certifications" class="overlay-link">Certifications</a>
+            <a href="#contact" class="overlay-link">Contact</a>
+        </div>
+    </header>
+
+    <!-- 1. OPENING SCREEN: Name Centered on Viewport, Menu Icons Hidden Until Scroll -->
+    <section class="opening-screen" id="opening-screen">
+        <div class="opening-content">
+            <h1 class="opening-name">BABULU <span>DIGAMARTI</span></h1>
+            <p class="opening-subtitle">Software Developer &bull; Full Stack Architect &bull; AI &amp; Data Science</p>
+            <div class="opening-stats">
+                <span class="badge">Zemoso Technologies Intern</span>
+                <span class="badge">B.Tech AI &amp; DS</span>
+                <span class="badge">React &bull; FastAPI &bull; Java &bull; Python</span>
+            </div>
+        </div>
+
+        <div class="scroll-indicator" id="scroll-prompt" role="button" aria-label="Scroll to explore portfolio">
+            <span class="scroll-text">Scroll to Explore</span>
+            <div class="mouse-icon">
+                <div class="mouse-wheel"></div>
+            </div>
+            <div class="chevron-down">&#x25BC;</div>
+        </div>
+    </section>
+
+    <!-- 2. NORMAL PORTFOLIO STRUCTURE -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="home" id="home">
+            <div class="intro">
+                <h2>
+                    I'm a
+                    <span>
+                        <span>Developer</span>
+                        <span>Full Stack Architect</span>
+                        <span>AI Engineer</span>
+                        <span>Problem Solver</span>
+                    </span>
+                </h2>
+            </div>
+            <div class="main">
+                <div class="intro-info">
+                    <h2 id="hi">Hi, I'm</h2>
+                    <h1>Babulu Digamarti</h1>
+                    <h2>Software Developer | AI &amp; Data Science Graduate</h2>
+                    <br>
+                    <p>Transforming complex ideas into scalable digital solutions, high-performance REST APIs, and automated AI systems.</p>
+                    <div class="btns">
+                        <a href="https://drive.google.com/file/d/1-BPbYdjYi1C3ByJrTe0NL2jlf4sVZQxj/view?usp=sharing"
+                            target="_blank" rel="noopener noreferrer">
+                            <button class="resume btn">Resume</button>
+                        </a>
+                        <a href="#contact">
+                            <button class="letsTalk btn">Let's Talk</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="myImage">
+                    <img src="Babulu_Digamarti_Original.jpg" alt="Babulu Digamarti">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <h3 class="subHeading">About Me</h3>
+            <p class="p">I’m <span class="highlight-text">Babulu Digamarti</span>, a Software Developer and B.Tech graduate in <strong>Artificial Intelligence &amp; Data Science</strong> from <strong>Sagi Rama Krishnam Raju (SRKR) Engineering College</strong> (CGPA: 7.56).</p>
+
+            <p class="p">
+                I specialize in <strong>Java, Python, TypeScript, React, FastAPI, Selenium, and TestNG</strong> with practical engineering experience gained as a <strong>Dev Intern at Zemoso Technologies</strong>. My work focuses on building scalable full-stack applications, robust REST APIs, test automation pipelines, Clean Code, and proven design patterns (Singleton, Builder, Factory).
+            </p>
+
+            <p class="p">
+                From architecting an AI-based automated security compliance framework for critical infrastructure to building full-stack platforms with modern frontends, I enjoy bridging the gap between rigorous software engineering and intelligent data solutions.
+            </p>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section class="skills" id="skills">
+            <h1 class="subHeading">Technical Skills</h1>
+            <p class="section-intro">Core technologies and competencies applied in production and enterprise projects</p>
+            
+            <div class="skills-grid">
+                <!-- Languages & Frameworks -->
+                <div class="skill-category">
+                    <h3 class="category-title">Languages &amp; Core</h3>
+                    <div class="skill-list">
+                        <div class="box">Java</div>
+                        <div class="box">Python</div>
+                        <div class="box">TypeScript</div>
+                        <div class="box">JavaScript</div>
+                        <div class="box">HTML5</div>
+                        <div class="box">CSS3</div>
+                    </div>
+                </div>
+
+                <!-- Frontend Development -->
+                <div class="skill-category">
+                    <h3 class="category-title">Frontend Development</h3>
+                    <div class="skill-list">
+                        <div class="box">React.js</div>
+                        <div class="box">Material UI</div>
+                        <div class="box">Atomic Design</div>
+                        <div class="box">React Testing Library</div>
+                        <div class="box">Responsive UI</div>
+                    </div>
+                </div>
+
+                <!-- Backend & Database -->
+                <div class="skill-category">
+                    <h3 class="category-title">Backend &amp; Database</h3>
+                    <div class="skill-list">
+                        <div class="box">FastAPI</div>
+                        <div class="box">Node.js</div>
+                        <div class="box">Express.js</div>
+                        <div class="box">REST APIs</div>
+                        <div class="box">MySQL</div>
+                        <div class="box">Pydantic</div>
+                        <div class="box">Alembic</div>
+                    </div>
+                </div>
+
+                <!-- Testing & Automation -->
+                <div class="skill-category">
+                    <h3 class="category-title">Testing &amp; Automation</h3>
+                    <div class="skill-list">
+                        <div class="box">Selenium WebDriver</div>
+                        <div class="box">TestNG</div>
+                        <div class="box">Manual Testing</div>
+                        <div class="box">STLC</div>
+                        <div class="box">Test Case Design</div>
+                    </div>
+                </div>
+
+                <!-- Core Engineering & Tools -->
+                <div class="skill-category">
+                    <h3 class="category-title">Concepts &amp; Tools</h3>
+                    <div class="skill-list">
+                        <div class="box">OOP &amp; SOLID Principles</div>
+                        <div class="box">Design Patterns</div>
+                        <div class="box">Data Structures</div>
+                        <div class="box">Git &amp; GitHub</div>
+                        <div class="box">Maven</div>
+                        <div class="box">Gradle</div>
+                        <div class="box">Postman</div>
+                        <div class="box">Scapy</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience & Internships Section -->
+        <section class="experience education" id="experience">
+            <h1 class="subHeading">Professional Experience</h1>
+
+            <div class="experience-container">
+                <!-- Zemoso Technologies -->
+                <div class="exp">
+                    <div class="exp-header">
+                        <h1>DEV INTERN</h1>
+                        <span class="company-badge">Zemoso Technologies</span>
+                    </div>
+                    <p class="duration">June 2026 – September 2026 (Paid)</p>
+                    <ul class="exp-bullets">
+                        <li>Developed <strong>Java and Python</strong> programs applying OOP, Clean Code, and SOLID principles; implemented design patterns (Singleton, Builder, Factory) using both classic and Pythonic approaches.</li>
+                        <li>Built and tested <strong>React components</strong> using Hooks, TypeScript, and Material UI Atomic Design, validated via <strong>React Testing Library</strong>.</li>
+                        <li>Implemented robust <strong>REST APIs with FastAPI</strong>, working with Pydantic models, path/query parameters, database connectivity, and Alembic migrations.</li>
+                        <li>Applied manual testing fundamentals (STLC, test case design, test plans) and automated test execution using <strong>Selenium WebDriver and TestNG</strong>, covering locators, synchronization, and exception handling.</li>
+                        <li>Used <strong>Git</strong> for version control and pull request workflows, and managed multi-module builds with <strong>Maven and Gradle</strong>.</li>
+                    </ul>
+                </div>
+
+                <!-- Gradious Technologies -->
+                <div class="exp">
+                    <div class="exp-header">
+                        <h1>FULL STACK DEVELOPMENT TRAINEE</h1>
+                        <span class="company-badge">Gradious Technologies</span>
+                    </div>
+                    <p class="duration">March 2025 – November 2025</p>
+                    <p class="role">Placement Training (COHORT-39) &bull; Full Stack Developer</p>
+                    <ul class="exp-bullets">
+                        <li>Built production-grade full-stack web applications with <strong>HTML, CSS, JavaScript, Node.js, Express.js, and MySQL</strong>, implementing secure REST APIs.</li>
+                        <li>Engineered high-performance responsive user interfaces, reducing page load times by <strong>40%</strong> and significantly optimizing real-time data visualization.</li>
+                    </ul>
+                </div>
+
+                <!-- Blackbucks Education -->
+                <div class="exp">
+                    <div class="exp-header">
+                        <h1>AI AND ML ENGINEER (VIRTUAL INTERNSHIP)</h1>
+                        <span class="company-badge">Blackbucks Education Pvt. Ltd.</span>
+                    </div>
+                    <p class="duration">January 2026 – April 2026</p>
+                    <ul class="exp-bullets">
+                        <li>Applied Python, Data Science, and Machine Learning concepts through structured assignments and algorithm implementations.</li>
+                        <li>Constructed end-to-end data processing pipelines, predictive models, and full-stack integration workflows.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects about" id="projects">
+            <h1 class="subHeading">Featured Projects</h1>
+            <p class="section-intro">Practical systems built across AI security, full-stack development, and test automation</p>
+
+            <div class="projects-grid">
+                <!-- Project 1: AI Compliance -->
+                <div class="project-card">
+                    <img src="ai_compliance.jpg" alt="AI Compliance Framework for Critical Infrastructure">
+                    <div class="project-info">
+                        <div class="card-top">
+                            <span class="project-tag">B.Tech Final Year Project &bull; Architect</span>
+                        </div>
+                        <h2>AI Compliance Framework for Critical Infrastructure Security</h2>
+                        <p class="desc">
+                            AI-based security prototype for critical infrastructure (banks, power grids) detecting DDoS, SQL Injection, XSS, and unauthorized access in real-time via live network packet capture.
+                        </p>
+                        <p class="pipeline-note">
+                            <strong>Inference Pipeline:</strong> Scapy &amp; CICIFlowmeter packet sniffer &rarr; 76 feature extraction &rarr; Random Forest on CICIDS2017 (90%+ accuracy) &rarr; Mapping to NIST SP 800-53, ISO 27001, and HIPAA controls.
+                        </p>
+                        <p class="tech"><strong>Tech Stack:</strong> Python, Flask, HTML, CSS, Scapy, CICIFlowmeter, Random Forest</p>
+                        <div class="links">
+                            <a href="https://github.com/babulu75/AI-Compliance" target="_blank" rel="noopener noreferrer"><button class="resume btn1">GitHub</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: TuneVault -->
+                <div class="project-card">
+                    <img src="tunevault.jpg" alt="TuneVault Music Player">
+                    <div class="project-info">
+                        <div class="card-top">
+                            <span class="project-tag">Full Stack &amp; Automation</span>
+                        </div>
+                        <h2>TuneVault &ndash; Music Player with Automated Testing</h2>
+                        <p class="desc">
+                            Full-stack music streaming player with playlist management and search via REST APIs, backed by Pydantic models, database connectivity, and Alembic migrations.
+                        </p>
+                        <p class="pipeline-note">
+                            <strong>Automated QA:</strong> Designed and automated an extensive Selenium WebDriver + TestNG test suite in Java to validate full user flows, state synchronization, and error handling.
+                        </p>
+                        <p class="tech"><strong>Tech Stack:</strong> React, TypeScript, FastAPI, Java, Selenium WebDriver, TestNG, Maven, Git</p>
+                        <div class="links">
+                            <a href="https://github.com/babulu75/TuneVault" target="_blank" rel="noopener noreferrer"><button class="resume btn1">GitHub</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Freelancer Works -->
+                <div class="project-card">
+                    <img src="p1.png" alt="Freelancer Works Platform">
+                    <div class="project-info">
+                        <div class="card-top">
+                            <span class="project-tag">Full Stack Web App</span>
+                        </div>
+                        <h2>Freelancer Works &ndash; Employment Platform</h2>
+                        <p class="desc">
+                            Comprehensive platform for freelancers and employers to register, post jobs, submit proposals, and communicate, with secure role-based authentication and access control.
+                        </p>
+                        <p class="tech"><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript, Node.js, Express.js, MySQL</p>
+                        <div class="links">
+                            <a href="https://github.com/babulu75/freelancer_platform" target="_blank" rel="noopener noreferrer"><button class="resume btn1">GitHub</button></a>
+                            <a href="https://freelancer-platform-88w9.onrender.com" target="_blank" rel="noopener noreferrer"><button class="btn1 letsTalk">Live Demo</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Veil Alumni Portal -->
+                <div class="project-card">
+                    <img src="p2.png" alt="Veil Alumni Portal">
+                    <div class="project-info">
+                        <div class="card-top">
+                            <span class="project-tag">Networking Portal</span>
+                        </div>
+                        <h2>Veil Alumni Portal</h2>
+                        <p class="desc">
+                            Alumni interaction platform with chat, networking, and AI integration for college graduates and current undergraduates to connect and mentor.
+                        </p>
+                        <p class="tech"><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript, Node.js, MySQL, AI &amp; ML Tools</p>
+                        <div class="links">
+                            <a href="https://github.com/babulu75/veil_alumni_portal" target="_blank" rel="noopener noreferrer"><button class="resume btn1">GitHub</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="education about" id="education">
+            <h1 class="subHeading">Education</h1>
+
+            <div class="education-container">
+                <div class="study">
+                    <div class="edu-header">
+                        <h1>Sagi Rama Krishnam Raju Engineering College, Bhimavaram</h1>
+                        <span class="tag">CGPA: 7.56</span>
+                    </div>
+                    <h3>Bachelor of Technology &ndash; Artificial Intelligence and Data Science</h3>
+                    <p class="edu-duration">2022 &ndash; 2026</p>
+                </div>
+
+                <div class="study">
+                    <div class="edu-header">
+                        <h1>Jawahar Navodaya Vidyalaya, Pedavegi</h1>
+                        <span class="tag">87.6%</span>
+                    </div>
+                    <h3>Class XII &ndash; (CBSE &ndash; MPC)</h3>
+                    <p class="edu-duration">2020 &ndash; 2022</p>
+                </div>
+
+                <div class="study">
+                    <div class="edu-header">
+                        <h1>Jawahar Navodaya Vidyalaya, Pedavegi</h1>
+                        <span class="tag">90.4%</span>
+                    </div>
+                    <h3>Class X (CBSE)</h3>
+                    <p class="edu-duration">2020</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section class="certifications education" id="certifications">
+            <h1 class="subHeading">Certifications</h1>
+
+            <div class="education-container">
+                <div class="study cert-card">
+                    <div class="edu-header">
+                        <h1>Python Full Stack Developer</h1>
+                        <span class="tag cert-tag">EduSkills Academy</span>
+                    </div>
+                    <h3>Comprehensive Python, Backend, Frontend &amp; Database Architecture</h3>
+                    <p class="desc cert-desc">
+                        Certified in enterprise Python full stack development and relational database integration covering backend APIs, responsive frontends, and REST communication.
+                    </p>
+                    <div class="cert-action">
+                        <a href="https://pythonfullstackdeveloper/certificate" target="_blank" rel="noopener noreferrer">
+                            <button class="resume btn1">View Certificate</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <h1 class="subHeading">Contact Me</h1>
+            <p class="contact-subtext">Feel free to reach out for opportunities, collaborations, or questions.</p>
+
+            <div class="contact-details-grid">
+                <div class="contact-info-card">
+                    <span class="info-label">Email</span>
+                    <a href="mailto:babulu8520@gmail.com" class="info-value">babulu8520@gmail.com</a>
+                </div>
+                <div class="contact-info-card">
+                    <span class="info-label">Phone</span>
+                    <a href="tel:+917013887916" class="info-value">+91-7013887916</a>
+                </div>
+                <div class="contact-info-card">
+                    <span class="info-label">Location</span>
+                    <span class="info-value">Andhra Pradesh, India</span>
+                </div>
+            </div>
+
+            <div class="contact-container">
+                <form class="contact-form" id="contact-form">
+                    <input type="text" id="contact-name" placeholder="Full Name" required>
+                    <input type="email" id="contact-email" placeholder="Email Address" required>
+                    <input type="text" id="contact-subject" placeholder="Subject" required>
+                    <textarea id="contact-message" placeholder="Your Message..." rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Sticky Social Links -->
+            <div class="social-bar" id="social-bar">
+                <a href="https://www.linkedin.com/in/babuludigamarti" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+                </a>
+                <a href="https://github.com/babulu75" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                </a>
+                <a href="https://instagram.com/_b._.d_babulu" target="_blank" rel="noopener noreferrer" title="Instagram">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+                </a>
+                <a href="mailto:babulu8520@gmail.com" title="Email Babulu">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Babulu Digamarti &bull; All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
