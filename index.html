@@ -4,439 +4,1092 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Babulu Digamarti - Software Developer skilled in Java, Python, TypeScript, React, FastAPI, Selenium, and AI systems.">
-    <title>Babulu Digamarti | Software Developer & Full Stack Architect</title>
-    <!-- Google Fonts for crisp modern typography -->
+    <meta name="description"
+        content="Babulu Digamarti - Software Developer, Full Stack Architect & AI Engineer. Experienced in Java, Python, TypeScript, React, FastAPI, Selenium, and AI systems.">
+    <title>Babulu Digamarti | Software Developer &amp; AI Systems Architect</title>
+
+    <!-- Google Fonts: Space Grotesk, Outfit, Inter, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Persistent Header Navigation (Hidden on initial opening screen, appears smoothly on scroll) -->
-    <header id="main-header" class="nav-hidden">
-        <a href="#opening-screen" class="logo">
-            <h1>Babulu <span>Digamarti</span></h1>
-        </a>
-        <nav id="desktop-nav">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#education">Education</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <div class="menu-icon" id="menu-btn" aria-label="Open Navigation Menu">&#9776;</div> <!-- hamburger icon -->
+    <!-- Ambient 3D Glow Orbs in Background -->
+    <div class="ambient-glow glow-1" aria-hidden="true"></div>
+    <div class="ambient-glow glow-2" aria-hidden="true"></div>
+    <div class="ambient-glow glow-3" aria-hidden="true"></div>
 
-        <div class="overlay" id="overlay">
-            <div class="close-overlay" id="close-overlay-btn">&times;</div>
-            <a href="#home" class="overlay-link">Home</a>
-            <a href="#about" class="overlay-link">About</a>
-            <a href="#skills" class="overlay-link">Skills</a>
-            <a href="#experience" class="overlay-link">Experience</a>
-            <a href="#projects" class="overlay-link">Projects</a>
-            <a href="#education" class="overlay-link">Education</a>
-            <a href="#certifications" class="overlay-link">Certifications</a>
-            <a href="#contact" class="overlay-link">Contact</a>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader" aria-hidden="true">
+        <div class="loader-inner">
+            <div class="loader-core"></div>
+            <div class="loader-ring ring-1"></div>
+            <div class="loader-ring ring-2"></div>
+            <div class="loader-ring ring-3"></div>
+            <span class="loader-text">INITIALIZING 3D ENGINE...</span>
+        </div>
+    </div>
+
+    <!-- High-Performance Interactive 3D WebGL Canvas -->
+    <canvas id="three-canvas" aria-hidden="true"></canvas>
+
+    <!-- 3D Interactive HUD Control Bar -->
+    <aside class="three-controls" aria-label="3D Scene Controls">
+        <div class="control-panel">
+            <span class="control-label">3D SCENE</span>
+            <div class="control-buttons">
+                <button type="button" class="btn-3d-mode active" data-mode="quantum"
+                    title="Switch to Quantum Core Mode">
+                    <span class="mode-dot"></span>Core
+                </button>
+                <button type="button" class="btn-3d-mode" data-mode="neural" title="Switch to Neural Web Mode">
+                    <span class="mode-dot"></span>Neural
+                </button>
+                <button type="button" class="btn-3d-mode" data-mode="wireframe"
+                    title="Switch to Hologram Blueprint Mode">
+                    <span class="mode-dot"></span>Grid
+                </button>
+            </div>
+            <button type="button" id="btn-pulse-core" class="btn-pulse" title="Trigger 3D Shockwave Pulse">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="m12 6 4 6h-8l4 6" />
+                </svg>
+                Pulse
+            </button>
+        </div>
+    </aside>
+
+    <!-- Persistent Header Navigation -->
+    <header id="main-header">
+        <a href="#hero" class="logo" aria-label="Babulu Digamarti Homepage">
+            <div class="logo-symbol">
+                <span class="symbol-core"></span>
+            </div>
+            <div class="logo-text">
+                <span class="name-first">Babulu</span>
+                <span class="name-last">Digamarti</span>
+                <span class="role-tag">DEV INTERN @ ZEMOSO</span>
+            </div>
+        </a>
+
+        <nav id="desktop-nav" aria-label="Primary Navigation">
+            <a href="#hero" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <!-- Audio Feedback Toggle Button -->
+            <button type="button" id="audio-toggle-btn" class="icon-btn" title="Toggle UI Sound Effects"
+                aria-label="Toggle Sound Effects">
+                <svg id="sound-icon-on" class="sound-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+                </svg>
+                <svg id="sound-icon-off" class="sound-icon hidden" width="18" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                    <line x1="23" y1="9" x2="17" y2="15" />
+                    <line x1="17" y1="9" x2="23" y2="15" />
+                </svg>
+                <span class="sound-label">SFX</span>
+            </button>
+
+            <!-- Resume Quick Button -->
+            <a href="https://drive.google.com/file/d/1-BPbYdjYi1C3ByJrTe0NL2jlf4sVZQxj/view?usp=sharing" target="_blank"
+                rel="noopener noreferrer" class="btn-nav-resume">
+                Resume
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17l9.2-9.2M17 17V8H8" />
+                </svg>
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button type="button" class="menu-icon" id="menu-btn" aria-label="Open Navigation Menu"
+                aria-expanded="false">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Overlay Navigation -->
+        <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+            <div class="overlay-header">
+                <span class="overlay-title">NAVIGATION</span>
+                <button type="button" class="close-overlay" id="close-overlay-btn"
+                    aria-label="Close Menu">&times;</button>
+            </div>
+            <div class="overlay-links">
+                <a href="#hero" class="overlay-link"><span class="num">01</span> Home</a>
+                <a href="#about" class="overlay-link"><span class="num">02</span> About</a>
+                <a href="#skills" class="overlay-link"><span class="num">03</span> Skills</a>
+                <a href="#experience" class="overlay-link"><span class="num">04</span> Experience</a>
+                <a href="#projects" class="overlay-link"><span class="num">05</span> Projects</a>
+                <a href="#education" class="overlay-link"><span class="num">06</span> Education</a>
+                <a href="#contact" class="overlay-link"><span class="num">07</span> Contact</a>
+            </div>
+            <div class="overlay-footer">
+                <a href="https://drive.google.com/file/d/1-BPbYdjYi1C3ByJrTe0NL2jlf4sVZQxj/view?usp=sharing"
+                    target="_blank" rel="noopener noreferrer" class="btn btn-primary">Download Resume</a>
+            </div>
         </div>
     </header>
 
-    <!-- 1. OPENING SCREEN: Name Centered on Viewport, Menu Icons Hidden Until Scroll -->
-    <section class="opening-screen" id="opening-screen">
-        <div class="opening-content">
-            <h1 class="opening-name">BABULU <span>DIGAMARTI</span></h1>
-            <p class="opening-subtitle">Software Developer &bull; Full Stack Architect &bull; AI &amp; Data Science</p>
-            <div class="opening-stats">
-                <span class="badge">Zemoso Technologies Intern</span>
-                <span class="badge">B.Tech AI &amp; DS</span>
-                <span class="badge">React &bull; FastAPI &bull; Java &bull; Python</span>
-            </div>
-        </div>
+    <!-- Social Sidebar Quick Links -->
+    <aside class="social-side-nav" aria-label="Social Profiles">
+        <a href="https://www.linkedin.com/in/babuludigamarti" target="_blank" rel="noopener noreferrer"
+            title="LinkedIn Profile" class="side-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+        </a>
+        <a href="https://github.com/babulu75" target="_blank" rel="noopener noreferrer" title="GitHub Profile"
+            class="side-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+        </a>
+        <a href="mailto:babulu8520@gmail.com" title="Send Email" class="side-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+            </svg>
+        </a>
+        <div class="side-line"></div>
+    </aside>
 
-        <div class="scroll-indicator" id="scroll-prompt" role="button" aria-label="Scroll to explore portfolio">
-            <span class="scroll-text">Scroll to Explore</span>
-            <div class="mouse-icon">
-                <div class="mouse-wheel"></div>
-            </div>
-            <div class="chevron-down">&#x25BC;</div>
-        </div>
-    </section>
-
-    <!-- 2. NORMAL PORTFOLIO STRUCTURE -->
+    <!-- MAIN PORTFOLIO -->
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="home" id="home">
-            <div class="intro">
-                <h2>
-                    I'm a
-                    <span>
-                        <span>Developer</span>
-                        <span>Full Stack Architect</span>
-                        <span>AI Engineer</span>
-                        <span>Problem Solver</span>
-                    </span>
-                </h2>
-            </div>
-            <div class="main">
-                <div class="intro-info">
-                    <h2 id="hi">Hi, I'm</h2>
-                    <h1>Babulu Digamarti</h1>
-                    <h2>Software Developer | AI &amp; Data Science Graduate</h2>
-                    <br>
-                    <p>Transforming complex ideas into scalable digital solutions, high-performance REST APIs, and automated AI systems.</p>
-                    <div class="btns">
+
+        <!-- 1. CINEMATIC 3D HERO SECTION -->
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <!-- Status Badge -->
+                    <div class="status-pill">
+                        <span class="pulse-indicator"></span>
+                        <span class="status-text">AVAILABLE FOR ROLES &bull; DEV INTERN @ ZEMOSO</span>
+                    </div>
+
+                    <!-- Main Impact Headline -->
+                    <h1 class="hero-headline">
+                        Architecting <span class="gradient-headline">Scalable Systems</span> &amp; Intelligent AI.
+                    </h1>
+
+                    <!-- Dynamic Role & Name Tag -->
+                    <div class="hero-identity">
+                        <span class="identity-name">Babulu Digamarti</span>
+                        <span class="identity-divider">/</span>
+                        <span class="identity-role" id="typewriter-role">Full Stack &amp; AI Engineer</span>
+                    </div>
+
+                    <!-- Subtitle -->
+                    <p class="hero-subtext">
+                        B.Tech in Artificial Intelligence &amp; Data Science (CGPA: 7.56). Experienced in
+                        production-grade <strong>Java, Python, TypeScript, React, FastAPI</strong>, automated test
+                        frameworks, and critical infrastructure AI security.
+                    </p>
+
+                    <!-- Primary Actions -->
+                    <div class="hero-actions">
                         <a href="https://drive.google.com/file/d/1-BPbYdjYi1C3ByJrTe0NL2jlf4sVZQxj/view?usp=sharing"
-                            target="_blank" rel="noopener noreferrer">
-                            <button class="resume btn">Resume</button>
+                            target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="btn-hero-resume">
+                            <span class="btn-glow"></span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                            </svg>
+                            View Resume
                         </a>
-                        <a href="#contact">
-                            <button class="letsTalk btn">Let's Talk</button>
+                        <a href="#projects" class="btn btn-secondary" id="btn-hero-projects">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                                <polyline points="2 17 12 22 22 17" />
+                                <polyline points="2 12 12 17 22 12" />
+                            </svg>
+                            Explore Projects
+                        </a>
+                        <a href="#contact" class="btn btn-ghost" id="btn-hero-contact">
+                            Let's Connect &rarr;
                         </a>
                     </div>
+
+                    <!-- Live Engineering Metrics HUD -->
+                    <div class="hero-metrics">
+                        <div class="metric-card">
+                            <span class="metric-value">3+</span>
+                            <span class="metric-label">Internships &amp; Cohorts</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">90%+</span>
+                            <span class="metric-label">ML Security Accuracy</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">40%</span>
+                            <span class="metric-label">Web Latency Reduced</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">100%</span>
+                            <span class="metric-label">Automated QA Coverage</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="myImage">
-                    <img src="Babulu_Digamarti_Original.jpg" alt="Babulu Digamarti">
+
+                <!-- 3D Holographic Interactive HUD Stage -->
+                <div class="hero-visual">
+                    <div class="hud-frame" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare
+                        data-tilt-max-glare="0.2">
+                        <!-- Holographic Scan Beam -->
+                        <div class="scan-beam" aria-hidden="true"></div>
+
+                        <!-- HUD Corner Brackets -->
+                        <div class="hud-corner top-left" aria-hidden="true"></div>
+                        <div class="hud-corner top-right" aria-hidden="true"></div>
+                        <div class="hud-corner bottom-left" aria-hidden="true"></div>
+                        <div class="hud-corner bottom-right" aria-hidden="true"></div>
+
+                        <!-- Top Diagnostics Bar -->
+                        <div class="hud-diagnostics">
+                            <span class="hud-tag">ID: BD-2026</span>
+                            <span class="hud-status"><span class="dot"></span>ACTIVE</span>
+                            <span class="hud-tech">AI &bull; FULL-STACK</span>
+                        </div>
+
+                        <!-- Photo Container -->
+                        <div class="hud-image-wrapper">
+                            <img src="Babulu_Digamarti_Original.jpg" alt="Babulu Digamarti" class="hud-image"
+                                loading="eager">
+                            <div class="hud-overlay-grid" aria-hidden="true"></div>
+                        </div>
+
+                        <!-- Bottom Telemetry Card -->
+                        <div class="hud-telemetry">
+                            <div class="telemetry-item">
+                                <span class="t-label">CURRENT FOCUS</span>
+                                <span class="t-val">FastAPI &bull; React &bull; Selenium QA</span>
+                            </div>
+                            <div class="telemetry-badge">SRKR ENG '26</div>
+                        </div>
+
+                        <!-- Interactive 3D Orbit Tip -->
+                        <div class="hud-hint">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+                            </svg>
+                            <span>DRAG 3D SPACE TO ROTATE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Prompt Indicator -->
+            <a href="#about" class="scroll-indicator-link" aria-label="Scroll to About Section">
+                <div class="scroll-pill">
+                    <div class="scroll-dot"></div>
+                </div>
+                <span class="scroll-label">SCROLL TO EXPLORE</span>
+            </a>
+        </section>
+
+        <!-- 2. ABOUT & ARCHITECTURE SECTION -->
+        <section class="section about-section" id="about">
+            <div class="section-header">
+                <span class="section-tag">[ 01 // OVERVIEW ]</span>
+                <h2 class="section-title">Engineering Philosophy &amp; Background</h2>
+                <p class="section-subtitle">Bridging rigorous software architecture, test-driven reliability, and
+                    intelligent AI models.</p>
+            </div>
+
+            <div class="about-grid">
+                <!-- Text Story -->
+                <div class="about-narrative">
+                    <div class="narrative-card">
+                        <div class="narrative-header">
+                            <div class="code-dot red"></div>
+                            <div class="code-dot yellow"></div>
+                            <div class="code-dot green"></div>
+                            <span class="card-title-mono">bio.config.json</span>
+                        </div>
+                        <div class="narrative-body">
+                            <p class="paragraph">
+                                I'm <span class="highlight">Babulu Digamarti</span>, a Software Developer and B.Tech
+                                graduate in <strong>Artificial Intelligence &amp; Data Science</strong> from
+                                <strong>Sagi Rama Krishnam Raju (SRKR) Engineering College</strong> (CGPA: 7.56).
+                            </p>
+                            <p class="paragraph">
+                                As a <strong>Dev Intern at Zemoso Technologies</strong>, I honed deep practical
+                                experience building production-grade microservices and modern frontends. I develop in
+                                <strong>Java and Python</strong> following strict Clean Code, SOLID principles, and
+                                proven design patterns (Singleton, Builder, Factory).
+                            </p>
+                            <p class="paragraph">
+                                My frontend systems are built with <strong>React.js, TypeScript, and Material UI Atomic
+                                    Design</strong>, coupled with automated regression safety nets via <strong>Selenium
+                                    WebDriver, TestNG, and React Testing Library</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Engineering Highlights Grid -->
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <div class="h-icon">&#x269B;</div>
+                            <h4>Clean Architecture</h4>
+                            <p>Modular OOP, SOLID compliance, decoupled design patterns, and maintainable layered
+                                systems.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="h-icon">&#x26A1;</div>
+                            <h4>High-Throughput APIs</h4>
+                            <p>FastAPI, Pydantic data schemas, Alembic migrations, and optimized SQL databases.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="h-icon">&#x2714;</div>
+                            <h4>Automated QA Pipelines</h4>
+                            <p>Robust Selenium WebDriver and TestNG frameworks with deterministic locator strategies and
+                                synchronization.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="h-icon">&#x2699;</div>
+                            <h4>AI &amp; Data Engineering</h4>
+                            <p>Packet-level live feature extraction, Random Forest classifiers, and regulatory
+                                compliance mapping.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Engineering Terminal Showcase -->
+                <div class="terminal-showcase">
+                    <div class="terminal-window">
+                        <div class="terminal-bar">
+                            <div class="terminal-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="terminal-tabs">
+                                <button type="button" class="term-tab active" data-tab="fastapi">api_engine.py</button>
+                                <button type="button" class="term-tab" data-tab="security">ai_compliance.py</button>
+                                <button type="button" class="term-tab" data-tab="qa">qa_suite.java</button>
+                            </div>
+                            <button type="button" class="btn-copy-code" id="btn-copy-terminal"
+                                title="Copy code snippet">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                </svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div class="terminal-code">
+                            <!-- Tab 1: FastAPI snippet -->
+                            <pre class="code-block active"
+                                id="code-fastapi"><code><span class="c-comment"># Production FastAPI Microservice with Pydantic & Alembic</span>
+<span class="c-keyword">from</span> fastapi <span class="c-keyword">import</span> FastAPI, Depends, HTTPException, status
+<span class="c-keyword">from</span> pydantic <span class="c-keyword">import</span> BaseModel, Field
+<span class="c-keyword">from</span> sqlalchemy.orm <span class="c-keyword">import</span> Session
+
+app = FastAPI(title=<span class="c-string">"Enterprise Core API"</span>, version=<span class="c-string">"2.4.0"</span>)
+
+<span class="c-keyword">class</span> <span class="c-class">SecurityTelemetry</span>(BaseModel):
+    packet_id: <span class="c-type">str</span> = Field(..., example=<span class="c-string">"PKT-8921"</span>)
+    protocol: <span class="c-type">str</span> = Field(..., regex=<span class="c-string">"^(TCP|UDP|ICMP)$"</span>)
+    latency_ms: <span class="c-type">float</span>
+    anomaly_score: <span class="c-type">float</span> = Field(..., ge=0.0, le=1.0)
+
+<span class="c-decorator">@app.post</span>(<span class="c-string">"/api/v1/telemetry/evaluate"</span>, response_model=<span class="c-type">dict</span>)
+<span class="c-keyword">async def</span> <span class="c-func">evaluate_stream</span>(payload: SecurityTelemetry, db: Session = Depends(get_db)):
+    <span class="c-keyword">if</span> payload.anomaly_score &gt; 0.85:
+        <span class="c-keyword">await</span> alert_dispatcher.trigger_incident(payload)
+        <span class="c-keyword">return</span> {<span class="c-string">"status"</span>: <span class="c-string">"MITIGATED"</span>, <span class="c-string">"action"</span>: <span class="c-string">"ISOLATE_NODE"</span>}
+    <span class="c-keyword">return</span> {<span class="c-string">"status"</span>: <span class="c-string">"NORMAL"</span>, <span class="c-string">"action"</span>: <span class="c-string">"ALLOW"</span>}</code></pre>
+
+                            <!-- Tab 2: AI Security snippet -->
+                            <pre class="code-block"
+                                id="code-security"><code><span class="c-comment"># Live Packet Sniffing & Machine Learning Inference</span>
+<span class="c-keyword">import</span> scapy.all <span class="c-keyword">as</span> scapy
+<span class="c-keyword">from</span> sklearn.ensemble <span class="c-keyword">import</span> RandomForestClassifier
+<span class="c-keyword">import</span> numpy <span class="c-keyword">as</span> np
+
+<span class="c-keyword">class</span> <span class="c-class">ComplianceEngine</span>:
+    <span class="c-keyword">def</span> <span class="c-func">__init__</span>(self, model_weights: <span class="c-type">str</span>):
+        self.model = self._load_weights(model_weights)
+        self.standards = [<span class="c-string">"NIST SP 800-53"</span>, <span class="c-string">"ISO/IEC 27001"</span>, <span class="c-string">"HIPAA"</span>]
+
+    <span class="c-keyword">def</span> <span class="c-func">extract_packet_features</span>(self, packet):
+        <span class="c-comment"># Extract 76 flow attributes (CICIDS2017 schema)</span>
+        features = np.zeros(76)
+        <span class="c-keyword">if</span> packet.haslayer(scapy.IP):
+            features[0] = len(packet)
+            features[1] = packet[scapy.IP].ttl
+        <span class="c-keyword">return</span> features
+
+    <span class="c-keyword">def</span> <span class="c-func">classify_traffic</span>(self, features_vec):
+        prediction = self.model.predict([features_vec])[0]
+        <span class="c-keyword">return</span> {<span class="c-string">"threat_type"</span>: prediction, <span class="c-string">"confidence"</span>: 0.942}</code></pre>
+
+                            <!-- Tab 3: Selenium QA snippet -->
+                            <pre class="code-block" id="code-qa"><code><span class="c-comment">// Automated Test Framework with Selenium WebDriver & TestNG</span>
+<span class="c-keyword">package</span> com.babulu.qa.tests;
+
+<span class="c-keyword">import</span> org.openqa.selenium.support.ui.ExpectedConditions;
+<span class="c-keyword">import</span> org.openqa.selenium.support.ui.WebDriverWait;
+<span class="c-keyword">import</span> org.testng.annotations.Test;
+<span class="c-keyword">import</span> static org.testng.Assert.assertTrue;
+
+<span class="c-keyword">public class</span> <span class="c-class">AuthPipelineTest</span> <span class="c-keyword">extends</span> BaseTest {
+
+    <span class="c-decorator">@Test</span>(priority = 1, description = <span class="c-string">"Validate JWT session token persistence"</span>)
+    <span class="c-keyword">public void</span> <span class="c-func">verifySessionSync</span>() {
+        LoginPage loginPage = <span class="c-keyword">new</span> LoginPage(driver);
+        DashboardPage dash = loginPage.loginWithValidCredentials(<span class="c-string">"engineer@zemoso.com"</span>, <span class="c-string">"Secret@2026"</span>);
+        
+        WebDriverWait wait = <span class="c-keyword">new</span> WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(dash.getDashboardRoot()));
+        
+        assertTrue(dash.isUserSessionActive(), <span class="c-string">"Session state must be active post-handshake"</span>);
+    }
+}</code></pre>
+                        </div>
+                        <div class="terminal-footer">
+                            <span class="term-status-dot"></span>
+                            <span class="term-status-text">ENV: PRODUCTION &bull; 0 LINT ERRORS &bull; 100%
+                                PASSING</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section class="about" id="about">
-            <h3 class="subHeading">About Me</h3>
-            <p class="p">I’m <span class="highlight-text">Babulu Digamarti</span>, a Software Developer and B.Tech graduate in <strong>Artificial Intelligence &amp; Data Science</strong> from <strong>Sagi Rama Krishnam Raju (SRKR) Engineering College</strong> (CGPA: 7.56).</p>
+        <!-- 3. TECHNICAL SKILLS SECTION -->
+        <section class="section skills-section" id="skills">
+            <div class="section-header">
+                <span class="section-tag">[ 02 // CAPABILITIES ]</span>
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">Proficiencies tested and hardened through enterprise development and
+                    production systems.</p>
+            </div>
 
-            <p class="p">
-                I specialize in <strong>Java, Python, TypeScript, React, FastAPI, Selenium, and TestNG</strong> with practical engineering experience gained as a <strong>Dev Intern at Zemoso Technologies</strong>. My work focuses on building scalable full-stack applications, robust REST APIs, test automation pipelines, Clean Code, and proven design patterns (Singleton, Builder, Factory).
-            </p>
-
-            <p class="p">
-                From architecting an AI-based automated security compliance framework for critical infrastructure to building full-stack platforms with modern frontends, I enjoy bridging the gap between rigorous software engineering and intelligent data solutions.
-            </p>
-        </section>
-
-        <!-- Technical Skills Section -->
-        <section class="skills" id="skills">
-            <h1 class="subHeading">Technical Skills</h1>
-            <p class="section-intro">Core technologies and competencies applied in production and enterprise projects</p>
-            
             <div class="skills-grid">
-                <!-- Languages & Frameworks -->
-                <div class="skill-category">
-                    <h3 class="category-title">Languages &amp; Core</h3>
-                    <div class="skill-list">
-                        <div class="box">Java</div>
-                        <div class="box">Python</div>
-                        <div class="box">TypeScript</div>
-                        <div class="box">JavaScript</div>
-                        <div class="box">HTML5</div>
-                        <div class="box">CSS3</div>
+                <!-- Category 1: Languages & Core -->
+                <div class="skill-category-card" data-tilt data-tilt-max="6" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="category-header">
+                        <div class="category-icon">&#60;/&#62;</div>
+                        <div class="category-titles">
+                            <h3>Languages &amp; Core</h3>
+                            <span class="card-sub">Foundation &amp; Multi-Paradigm</span>
+                        </div>
+                    </div>
+                    <div class="skills-badges">
+                        <span class="tech-badge primary"><span class="badge-dot"></span>Java</span>
+                        <span class="tech-badge primary"><span class="badge-dot"></span>Python</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>TypeScript</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>JavaScript (ES6+)</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>HTML5</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>CSS3 / Modern UI</span>
+                    </div>
+                    <div class="card-footer-metric">
+                        <span class="f-label">PARADIGMS</span>
+                        <span class="f-val">OOP &bull; Functional &bull; Clean Code</span>
                     </div>
                 </div>
 
-                <!-- Frontend Development -->
-                <div class="skill-category">
-                    <h3 class="category-title">Frontend Development</h3>
-                    <div class="skill-list">
-                        <div class="box">React.js</div>
-                        <div class="box">Material UI</div>
-                        <div class="box">Atomic Design</div>
-                        <div class="box">React Testing Library</div>
-                        <div class="box">Responsive UI</div>
+                <!-- Category 2: Frontend Engineering -->
+                <div class="skill-category-card" data-tilt data-tilt-max="6" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="category-header">
+                        <div class="category-icon">&#x25A3;</div>
+                        <div class="category-titles">
+                            <h3>Frontend Development</h3>
+                            <span class="card-sub">Interactive &amp; Component-Driven</span>
+                        </div>
+                    </div>
+                    <div class="skills-badges">
+                        <span class="tech-badge primary"><span class="badge-dot"></span>React.js</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Material UI</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Atomic Design</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>React Testing Library</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Responsive Systems</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Three.js / WebGL</span>
+                    </div>
+                    <div class="card-footer-metric">
+                        <span class="f-label">METHODOLOGY</span>
+                        <span class="f-val">Design Systems &bull; Micro-interactions</span>
                     </div>
                 </div>
 
-                <!-- Backend & Database -->
-                <div class="skill-category">
-                    <h3 class="category-title">Backend &amp; Database</h3>
-                    <div class="skill-list">
-                        <div class="box">FastAPI</div>
-                        <div class="box">Node.js</div>
-                        <div class="box">Express.js</div>
-                        <div class="box">REST APIs</div>
-                        <div class="box">MySQL</div>
-                        <div class="box">Pydantic</div>
-                        <div class="box">Alembic</div>
+                <!-- Category 3: Backend & Database -->
+                <div class="skill-category-card" data-tilt data-tilt-max="6" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="category-header">
+                        <div class="category-icon">&#x2699;</div>
+                        <div class="category-titles">
+                            <h3>Backend &amp; Distributed</h3>
+                            <span class="card-sub">REST APIs &amp; Relational Schemas</span>
+                        </div>
+                    </div>
+                    <div class="skills-badges">
+                        <span class="tech-badge primary"><span class="badge-dot"></span>FastAPI</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Node.js</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Express.js</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>RESTful Architecture</span>
+                        <span class="tech-badge primary"><span class="badge-dot"></span>MySQL</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Pydantic</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Alembic Migrations</span>
+                    </div>
+                    <div class="card-footer-metric">
+                        <span class="f-label">COMPLIANCE</span>
+                        <span class="f-val">Type-Safe &bull; Stateless &bull; Scalable</span>
                     </div>
                 </div>
 
-                <!-- Testing & Automation -->
-                <div class="skill-category">
-                    <h3 class="category-title">Testing &amp; Automation</h3>
-                    <div class="skill-list">
-                        <div class="box">Selenium WebDriver</div>
-                        <div class="box">TestNG</div>
-                        <div class="box">Manual Testing</div>
-                        <div class="box">STLC</div>
-                        <div class="box">Test Case Design</div>
+                <!-- Category 4: Testing & Quality Assurance -->
+                <div class="skill-category-card" data-tilt data-tilt-max="6" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="category-header">
+                        <div class="category-icon">&#x2714;</div>
+                        <div class="category-titles">
+                            <h3>Testing &amp; QA Automation</h3>
+                            <span class="card-sub">Deterministic Quality Engineering</span>
+                        </div>
+                    </div>
+                    <div class="skills-badges">
+                        <span class="tech-badge primary"><span class="badge-dot"></span>Selenium WebDriver</span>
+                        <span class="tech-badge primary"><span class="badge-dot"></span>TestNG</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>STLC Standards</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Test Case Design</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Synchronization Handling</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Automated Regressions</span>
+                    </div>
+                    <div class="card-footer-metric">
+                        <span class="f-label">PIPELINE</span>
+                        <span class="f-val">Continuous Testing &bull; Deterministic</span>
                     </div>
                 </div>
 
-                <!-- Core Engineering & Tools -->
-                <div class="skill-category">
-                    <h3 class="category-title">Concepts &amp; Tools</h3>
-                    <div class="skill-list">
-                        <div class="box">OOP &amp; SOLID Principles</div>
-                        <div class="box">Design Patterns</div>
-                        <div class="box">Data Structures</div>
-                        <div class="box">Git &amp; GitHub</div>
-                        <div class="box">Maven</div>
-                        <div class="box">Gradle</div>
-                        <div class="box">Postman</div>
-                        <div class="box">Scapy</div>
+                <!-- Category 5: Architecture & DevOps Tools -->
+                <div class="skill-category-card full-width-card" data-tilt data-tilt-max="4" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="category-header">
+                        <div class="category-icon">&#x269B;</div>
+                        <div class="category-titles">
+                            <h3>Architecture, Build &amp; DevOps</h3>
+                            <span class="card-sub">Engineering Rigor &amp; Toolchain Mastery</span>
+                        </div>
+                    </div>
+                    <div class="skills-badges wide-badges">
+                        <span class="tech-badge primary"><span class="badge-dot"></span>SOLID Principles</span>
+                        <span class="tech-badge primary"><span class="badge-dot"></span>Design Patterns (Singleton,
+                            Builder, Factory)</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Data Structures &amp; Algorithms</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Git &amp; GitHub PR Workflows</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Maven</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Gradle</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Postman</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Scapy Packet Sniffing</span>
+                        <span class="tech-badge"><span class="badge-dot"></span>Docker</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Professional Experience & Internships Section -->
-        <section class="experience education" id="experience">
-            <h1 class="subHeading">Professional Experience</h1>
+        <!-- 4. PROFESSIONAL EXPERIENCE SECTION -->
+        <section class="section experience-section" id="experience">
+            <div class="section-header">
+                <span class="section-tag">[ 03 // INDUSTRY TRACK ]</span>
+                <h2 class="section-title">Work Experience</h2>
+                <p class="section-subtitle">Real-world impact across software development, full-stack training, and AI
+                    internships.</p>
+            </div>
 
-            <div class="experience-container">
-                <!-- Zemoso Technologies -->
-                <div class="exp">
-                    <div class="exp-header">
-                        <h1>DEV INTERN</h1>
-                        <span class="company-badge">Zemoso Technologies</span>
+            <div class="experience-timeline">
+                <!-- Experience 1: Zemoso Technologies -->
+                <div class="timeline-item featured" data-animate="timeline">
+                    <div class="timeline-marker">
+                        <div class="marker-core"></div>
                     </div>
-                    <p class="duration">June 2026 – September 2026 (Paid)</p>
-                    <ul class="exp-bullets">
-                        <li>Developed <strong>Java and Python</strong> programs applying OOP, Clean Code, and SOLID principles; implemented design patterns (Singleton, Builder, Factory) using both classic and Pythonic approaches.</li>
-                        <li>Built and tested <strong>React components</strong> using Hooks, TypeScript, and Material UI Atomic Design, validated via <strong>React Testing Library</strong>.</li>
-                        <li>Implemented robust <strong>REST APIs with FastAPI</strong>, working with Pydantic models, path/query parameters, database connectivity, and Alembic migrations.</li>
-                        <li>Applied manual testing fundamentals (STLC, test case design, test plans) and automated test execution using <strong>Selenium WebDriver and TestNG</strong>, covering locators, synchronization, and exception handling.</li>
-                        <li>Used <strong>Git</strong> for version control and pull request workflows, and managed multi-module builds with <strong>Maven and Gradle</strong>.</li>
-                    </ul>
+                    <div class="timeline-card" data-tilt data-tilt-max="4" data-tilt-speed="400">
+                        <div class="card-glow-layer"></div>
+                        <div class="card-meta">
+                            <span class="badge-role">DEV INTERN (PAID)</span>
+                            <span class="badge-company">Zemoso Technologies</span>
+                            <span class="badge-date">June 2026 – September 2026</span>
+                        </div>
+                        <h3 class="role-title">Junior Developer Consultant</h3>
+                        <p class="role-summary">Applied core software engineering principles in enterprise sprints with
+                            multi-tier codebases.</p>
+                        <ul class="role-achievements">
+                            <li>Developed <strong>Java and Python</strong> programs applying Object-Oriented
+                                Programming, Clean Code, and SOLID principles; implemented design patterns (Singleton,
+                                Builder, Factory) in both classic Java and Pythonic paradigms.</li>
+                            <li>Engineered modular <strong>React.js components</strong> using Hooks, TypeScript, and
+                                Material UI Atomic Design principles, verified with comprehensive <strong>React Testing
+                                    Library</strong> unit tests.</li>
+                            <li>Constructed robust <strong>REST APIs with FastAPI</strong>, implementing Pydantic data
+                                schemas, query/path parameters, database connectivity, and Alembic database migrations.
+                            </li>
+                            <li>Mastered testing lifecycle (STLC, test case design, test plans) and automated web
+                                interactions using <strong>Selenium WebDriver and TestNG</strong> in Java, handling
+                                complex locators and dynamic synchronization.</li>
+                            <li>Managed multi-module project builds with <strong>Maven and Gradle</strong>, and adhered
+                                to collaborative <strong>Git branching and PR review standards</strong>.</li>
+                        </ul>
+                        <div class="card-tags">
+                            <span>Java</span><span>Python</span><span>React</span><span>FastAPI</span><span>TypeScript</span><span>Selenium</span><span>TestNG</span><span>Alembic</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Gradious Technologies -->
-                <div class="exp">
-                    <div class="exp-header">
-                        <h1>FULL STACK DEVELOPMENT TRAINEE</h1>
-                        <span class="company-badge">Gradious Technologies</span>
+                <!-- Experience 2: Gradious Technologies -->
+                <div class="timeline-item" data-animate="timeline">
+                    <div class="timeline-marker">
+                        <div class="marker-core"></div>
                     </div>
-                    <p class="duration">March 2025 – November 2025</p>
-                    <p class="role">Placement Training (COHORT-39) &bull; Full Stack Developer</p>
-                    <ul class="exp-bullets">
-                        <li>Built production-grade full-stack web applications with <strong>HTML, CSS, JavaScript, Node.js, Express.js, and MySQL</strong>, implementing secure REST APIs.</li>
-                        <li>Engineered high-performance responsive user interfaces, reducing page load times by <strong>40%</strong> and significantly optimizing real-time data visualization.</li>
-                    </ul>
+                    <div class="timeline-card" data-tilt data-tilt-max="4" data-tilt-speed="400">
+                        <div class="card-glow-layer"></div>
+                        <div class="card-meta">
+                            <span class="badge-role">COHORT-39 TRAINEE</span>
+                            <span class="badge-company">Gradious Technologies</span>
+                            <span class="badge-date">March 2025 – November 2025</span>
+                        </div>
+                        <h3 class="role-title">Full Stack Development Trainee</h3>
+                        <p class="role-summary">Intensive 8-month cohort developing production-ready full-stack
+                            applications.</p>
+                        <ul class="role-achievements">
+                            <li>Engineered production-grade web applications with <strong>HTML5, CSS3, JavaScript,
+                                    Node.js, Express.js, and MySQL</strong>, implementing secure and idempotent REST
+                                endpoints.</li>
+                            <li>Optimized frontend rendering and payload structures, reducing page load times by
+                                <strong>40%</strong> and enhancing real-time data visualization.</li>
+                            <li>Executed schema design, indexing, and complex queries in MySQL for multi-tenant
+                                application states.</li>
+                        </ul>
+                        <div class="card-tags">
+                            <span>Node.js</span><span>Express.js</span><span>MySQL</span><span>JavaScript</span><span>REST
+                                APIs</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Blackbucks Education -->
-                <div class="exp">
-                    <div class="exp-header">
-                        <h1>AI AND ML ENGINEER (VIRTUAL INTERNSHIP)</h1>
-                        <span class="company-badge">Blackbucks Education Pvt. Ltd.</span>
+                <!-- Experience 3: Blackbucks Education -->
+                <div class="timeline-item" data-animate="timeline">
+                    <div class="timeline-marker">
+                        <div class="marker-core"></div>
                     </div>
-                    <p class="duration">January 2026 – April 2026</p>
-                    <ul class="exp-bullets">
-                        <li>Applied Python, Data Science, and Machine Learning concepts through structured assignments and algorithm implementations.</li>
-                        <li>Constructed end-to-end data processing pipelines, predictive models, and full-stack integration workflows.</li>
-                    </ul>
+                    <div class="timeline-card" data-tilt data-tilt-max="4" data-tilt-speed="400">
+                        <div class="card-glow-layer"></div>
+                        <div class="card-meta">
+                            <span class="badge-role">VIRTUAL INTERNSHIP</span>
+                            <span class="badge-company">Blackbucks Education Pvt. Ltd.</span>
+                            <span class="badge-date">January 2026 – April 2026</span>
+                        </div>
+                        <h3 class="role-title">AI and Machine Learning Intern</h3>
+                        <p class="role-summary">Constructed machine learning data pipelines and predictive modeling
+                            workflows.</p>
+                        <ul class="role-achievements">
+                            <li>Implemented end-to-end data science workflows in <strong>Python</strong>: data
+                                exploration, feature scaling, model selection, and hyperparameter tuning.</li>
+                            <li>Built predictive classification models and connected outputs into interactive backend
+                                interfaces.</li>
+                        </ul>
+                        <div class="card-tags">
+                            <span>Python</span><span>Data Science</span><span>Scikit-Learn</span><span>Machine
+                                Learning</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section class="projects about" id="projects">
-            <h1 class="subHeading">Featured Projects</h1>
-            <p class="section-intro">Practical systems built across AI security, full-stack development, and test automation</p>
+        <!-- 5. FEATURED PROJECTS SECTION -->
+        <section class="section projects-section" id="projects">
+            <div class="section-header">
+                <span class="section-tag">[ 04 // ARTIFACTS ]</span>
+                <h2 class="section-title">Featured Systems &amp; Projects</h2>
+                <p class="section-subtitle">Real architectural systems solving real-world challenges in cyber security,
+                    music streaming, and job markets.</p>
+            </div>
 
             <div class="projects-grid">
-                <!-- Project 1: AI Compliance -->
-                <div class="project-card">
-                    <img src="ai_compliance.jpg" alt="AI Compliance Framework for Critical Infrastructure">
-                    <div class="project-info">
-                        <div class="card-top">
-                            <span class="project-tag">B.Tech Final Year Project &bull; Architect</span>
+                <!-- Project 1: AI Compliance Framework (Flagship) -->
+                <div class="project-showcase-card flagship" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="project-visual">
+                        <img src="ai_compliance.jpg" alt="AI Compliance Framework for Critical Infrastructure"
+                            loading="lazy">
+                        <div class="project-badge-float">B.Tech Final Year Flagship</div>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-meta-row">
+                            <span class="meta-tag">AI CYBERSECURITY &bull; SCAPY &bull; RANDOM FOREST</span>
+                            <span class="meta-year">2026</span>
                         </div>
-                        <h2>AI Compliance Framework for Critical Infrastructure Security</h2>
-                        <p class="desc">
-                            AI-based security prototype for critical infrastructure (banks, power grids) detecting DDoS, SQL Injection, XSS, and unauthorized access in real-time via live network packet capture.
+                        <h3 class="project-heading">AI Compliance Framework for Critical Infrastructure Security</h3>
+                        <p class="project-desc">
+                            Automated security and regulatory compliance platform for critical infrastructure (banks,
+                            smart grids). Intercepts live network traffic, extracts 76 network flow metrics, and flags
+                            threats in real-time.
                         </p>
-                        <p class="pipeline-note">
-                            <strong>Inference Pipeline:</strong> Scapy &amp; CICIFlowmeter packet sniffer &rarr; 76 feature extraction &rarr; Random Forest on CICIDS2017 (90%+ accuracy) &rarr; Mapping to NIST SP 800-53, ISO 27001, and HIPAA controls.
-                        </p>
-                        <p class="tech"><strong>Tech Stack:</strong> Python, Flask, HTML, CSS, Scapy, CICIFlowmeter, Random Forest</p>
-                        <div class="links">
-                            <a href="https://github.com/babulu75/AI-Compliance" target="_blank" rel="noopener noreferrer"><button class="resume btn1">GitHub</button></a>
+
+                        <div class="architecture-pill-box">
+                            <span class="arch-title">PIPELINE ARCHITECTURE:</span>
+                            <p class="arch-text">
+                                Live Packet Capture (Scapy / CICIFlowmeter) &rarr; 76 Network Flow Features &rarr;
+                                Random Forest Classifier trained on CICIDS2017 (<strong>90%+ accuracy</strong>) &rarr;
+                                Automated Mapping to <strong>NIST SP 800-53, ISO 27001, and HIPAA</strong> controls.
+                            </p>
+                        </div>
+
+                        <div class="project-tech-pills">
+                            <span>Python</span><span>Flask</span><span>Scapy</span><span>CICIFlowmeter</span><span>Random
+                                Forest</span><span>HTML5/CSS3</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="https://github.com/babulu75/AI-Compliance" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-github">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                </svg>
+                                GitHub Repository
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M7 17l9.2-9.2M17 17V8H8" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 2: TuneVault -->
-                <div class="project-card">
-                    <img src="tunevault.jpg" alt="TuneVault Music Player">
-                    <div class="project-info">
-                        <div class="card-top">
-                            <span class="project-tag">Full Stack &amp; Automation</span>
+                <div class="project-showcase-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="project-visual">
+                        <img src="tunevault.jpg" alt="TuneVault Music Player" loading="lazy">
+                        <div class="project-badge-float">Full Stack &amp; Automated QA</div>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-meta-row">
+                            <span class="meta-tag">FASTAPI &bull; REACT &bull; SELENIUM AUTOMATION</span>
+                            <span class="meta-year">2026</span>
                         </div>
-                        <h2>TuneVault &ndash; Music Player with Automated Testing</h2>
-                        <p class="desc">
-                            Full-stack music streaming player with playlist management and search via REST APIs, backed by Pydantic models, database connectivity, and Alembic migrations.
+                        <h3 class="project-heading">TuneVault &ndash; High-Performance Music Platform</h3>
+                        <p class="project-desc">
+                            Full-stack music streaming player with custom playlist management, search, and audio stream
+                            routing backed by FastAPI, Pydantic models, and Alembic database migrations.
                         </p>
-                        <p class="pipeline-note">
-                            <strong>Automated QA:</strong> Designed and automated an extensive Selenium WebDriver + TestNG test suite in Java to validate full user flows, state synchronization, and error handling.
-                        </p>
-                        <p class="tech"><strong>Tech Stack:</strong> React, TypeScript, FastAPI, Java, Selenium WebDriver, TestNG, Maven, Git</p>
-                        <div class="links">
-                            <a href="https://github.com/babulu75/TuneVault" target="_blank" rel="noopener noreferrer"><button class="resume btn1">GitHub</button></a>
+
+                        <div class="architecture-pill-box">
+                            <span class="arch-title">AUTOMATION SUITE:</span>
+                            <p class="arch-text">
+                                Full regression test suite automated in <strong>Java with Selenium WebDriver and
+                                    TestNG</strong>, verifying end-to-end user journeys, dynamic DOM state sync, and
+                                exception resilience.
+                            </p>
+                        </div>
+
+                        <div class="project-tech-pills">
+                            <span>React</span><span>TypeScript</span><span>FastAPI</span><span>Java</span><span>Selenium</span><span>TestNG</span><span>Maven</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="https://github.com/babulu75/TuneVault" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-github">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                </svg>
+                                GitHub Repository
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M7 17l9.2-9.2M17 17V8H8" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 3: Freelancer Works -->
-                <div class="project-card">
-                    <img src="p1.png" alt="Freelancer Works Platform">
-                    <div class="project-info">
-                        <div class="card-top">
-                            <span class="project-tag">Full Stack Web App</span>
-                        </div>
-                        <h2>Freelancer Works &ndash; Employment Platform</h2>
-                        <p class="desc">
-                            Comprehensive platform for freelancers and employers to register, post jobs, submit proposals, and communicate, with secure role-based authentication and access control.
-                        </p>
-                        <p class="tech"><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript, Node.js, Express.js, MySQL</p>
-                        <div class="links">
-                            <a href="https://github.com/babulu75/freelancer_platform" target="_blank" rel="noopener noreferrer"><button class="resume btn1">GitHub</button></a>
-                            <a href="https://freelancer-platform-88w9.onrender.com" target="_blank" rel="noopener noreferrer"><button class="btn1 letsTalk">Live Demo</button></a>
-                        </div>
+                <div class="project-showcase-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="project-visual">
+                        <img src="p1.png" alt="Freelancer Works Platform" loading="lazy">
+                        <div class="project-badge-float">Full Stack Web Application</div>
                     </div>
-                </div>
-
-                <!-- Project 4: Veil Alumni Portal -->
-                <div class="project-card">
-                    <img src="p2.png" alt="Veil Alumni Portal">
-                    <div class="project-info">
-                        <div class="card-top">
-                            <span class="project-tag">Networking Portal</span>
+                    <div class="project-details">
+                        <div class="project-meta-row">
+                            <span class="meta-tag">NODE.JS &bull; EXPRESS &bull; MYSQL</span>
+                            <span class="meta-year">2025</span>
                         </div>
-                        <h2>Veil Alumni Portal</h2>
-                        <p class="desc">
-                            Alumni interaction platform with chat, networking, and AI integration for college graduates and current undergraduates to connect and mentor.
+                        <h3 class="project-heading">Freelancer Works &ndash; Employment Platform</h3>
+                        <p class="project-desc">
+                            End-to-end platform connecting freelancers with employers. Includes user authentication,
+                            verified job postings, bid proposal lifecycle, and direct employer-freelancer messaging.
                         </p>
-                        <p class="tech"><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript, Node.js, MySQL, AI &amp; ML Tools</p>
-                        <div class="links">
-                            <a href="https://github.com/babulu75/veil_alumni_portal" target="_blank" rel="noopener noreferrer"><button class="resume btn1">GitHub</button></a>
+
+                        <div class="architecture-pill-box">
+                            <span class="arch-title">DATA LAYER:</span>
+                            <p class="arch-text">
+                                Normalized relational schema in <strong>MySQL</strong> with foreign-key constraints,
+                                role-based JWT auth tokens, and parametrized SQL queries mitigating injection
+                                vulnerabilities.
+                            </p>
+                        </div>
+
+                        <div class="project-tech-pills">
+                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Node.js</span><span>Express.js</span><span>MySQL</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="https://github.com/babulu75/Freelancer-Works" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-github">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                </svg>
+                                GitHub Repository
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M7 17l9.2-9.2M17 17V8H8" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Education Section -->
-        <section class="education about" id="education">
-            <h1 class="subHeading">Education</h1>
-
-            <div class="education-container">
-                <div class="study">
-                    <div class="edu-header">
-                        <h1>Sagi Rama Krishnam Raju Engineering College, Bhimavaram</h1>
-                        <span class="tag">CGPA: 7.56</span>
-                    </div>
-                    <h3>Bachelor of Technology &ndash; Artificial Intelligence and Data Science</h3>
-                    <p class="edu-duration">2022 &ndash; 2026</p>
-                </div>
-
-                <div class="study">
-                    <div class="edu-header">
-                        <h1>Jawahar Navodaya Vidyalaya, Pedavegi</h1>
-                        <span class="tag">87.6%</span>
-                    </div>
-                    <h3>Class XII &ndash; (CBSE &ndash; MPC)</h3>
-                    <p class="edu-duration">2020 &ndash; 2022</p>
-                </div>
-
-                <div class="study">
-                    <div class="edu-header">
-                        <h1>Jawahar Navodaya Vidyalaya, Pedavegi</h1>
-                        <span class="tag">90.4%</span>
-                    </div>
-                    <h3>Class X (CBSE)</h3>
-                    <p class="edu-duration">2020</p>
-                </div>
+        <!-- 6. EDUCATION & CREDENTIALS SECTION -->
+        <section class="section education-section" id="education">
+            <div class="section-header">
+                <span class="section-tag">[ 05 // CREDENTIALS ]</span>
+                <h2 class="section-title">Education &amp; Background</h2>
+                <p class="section-subtitle">Academic foundations in artificial intelligence and computer science.</p>
             </div>
-        </section>
 
-        <!-- Certifications Section -->
-        <section class="certifications education" id="certifications">
-            <h1 class="subHeading">Certifications</h1>
-
-            <div class="education-container">
-                <div class="study cert-card">
-                    <div class="edu-header">
-                        <h1>Python Full Stack Developer</h1>
-                        <span class="tag cert-tag">EduSkills Academy</span>
-                    </div>
-                    <h3>Comprehensive Python, Backend, Frontend &amp; Database Architecture</h3>
-                    <p class="desc cert-desc">
-                        Certified in enterprise Python full stack development and relational database integration covering backend APIs, responsive frontends, and REST communication.
+            <div class="education-grid">
+                <!-- B.Tech Degree -->
+                <div class="edu-card featured-edu" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="edu-icon">&#x1F393;</div>
+                    <div class="edu-badge">GRADUATING 2026</div>
+                    <h3>B.Tech &bull; Artificial Intelligence &amp; Data Science</h3>
+                    <h4 class="edu-institution">Sagi Rama Krishnam Raju (SRKR) Engineering College</h4>
+                    <div class="edu-metric-pill">CGPA: <strong>7.56 / 10.0</strong></div>
+                    <p class="edu-desc">
+                        Comprehensive curriculum covering Algorithms, Distributed Systems, Deep Learning, Statistical
+                        Machine Learning, and Secure Software Engineering.
                     </p>
-                    <div class="cert-action">
-                        <a href="https://pythonfullstackdeveloper/certificate" target="_blank" rel="noopener noreferrer">
-                            <button class="resume btn1">View Certificate</button>
+                </div>
+
+                <!-- Intermediate College -->
+                <div class="edu-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="edu-icon">&#x1F4DA;</div>
+                    <div class="edu-badge">2020 – 2022</div>
+                    <h3>Intermediate (MPC &bull; Maths, Physics, Chemistry)</h3>
+                    <h4 class="edu-institution">Sri Chaitanya Junior College</h4>
+                    <div class="edu-metric-pill">Marks: <strong>723 / 1000</strong></div>
+                    <p class="edu-desc">
+                        Rigorous mathematical and analytical problem-solving foundation in calculus, algebra, and
+                        physics.
+                    </p>
+                </div>
+
+                <!-- SSC Secondary -->
+                <div class="edu-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="edu-icon">&#x1F3EB;</div>
+                    <div class="edu-badge">2019 – 2020</div>
+                    <h3>Secondary School Certificate (SSC)</h3>
+                    <h4 class="edu-institution">Bhashyam Public School</h4>
+                    <div class="edu-metric-pill">GPA: <strong>9.3 / 10.0</strong></div>
+                    <p class="edu-desc">
+                        Academic excellence in mathematics, physical sciences, and computer foundations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CONTACT & GET IN TOUCH -->
+        <section class="section contact-section" id="contact">
+            <div class="section-header">
+                <span class="section-tag">[ 06 // TRANSMISSION ]</span>
+                <h2 class="section-title">Initiate Contact</h2>
+                <p class="section-subtitle">Looking for a high-impact Software Developer or AI Engineer? Let's discuss
+                    your next project.</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <!-- Info Cards -->
+                <div class="contact-info-column">
+                    <div class="contact-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <div class="contact-card-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                        </div>
+                        <div class="contact-card-text">
+                            <span class="label">EMAIL ADDRESS</span>
+                            <a href="mailto:babulu8520@gmail.com" class="val">babulu8520@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <div class="contact-card-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        <div class="contact-card-text">
+                            <span class="label">PHONE / WHATSAPP</span>
+                            <a href="tel:+917013887916" class="val">+91-7013887916</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <div class="contact-card-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div class="contact-card-text">
+                            <span class="label">LOCATION</span>
+                            <span class="val">Andhra Pradesh, India (Open to Relocation)</span>
+                        </div>
+                    </div>
+
+                    <!-- Direct Social Row -->
+                    <div class="contact-social-row">
+                        <a href="https://www.linkedin.com/in/babuludigamarti" target="_blank" rel="noopener noreferrer"
+                            class="social-chip" title="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/babulu75" target="_blank" rel="noopener noreferrer"
+                            class="social-chip" title="GitHub">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="https://instagram.com/_b._.d_babulu" target="_blank" rel="noopener noreferrer"
+                            class="social-chip" title="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                            Instagram
                         </a>
                     </div>
                 </div>
+
+                <!-- Interactive Holographic Contact Terminal Form -->
+                <div class="contact-form-card" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                    <div class="card-glow-layer"></div>
+                    <div class="form-card-header">
+                        <span class="mono-prefix">$ send_message --priority=high</span>
+                        <span class="form-status-ready">READY</span>
+                    </div>
+
+                    <form id="contact-form" class="holographic-form">
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label for="contact-name">FULL NAME</label>
+                                <input type="text" id="contact-name" placeholder="Alex Rivers" required
+                                    autocomplete="name">
+                            </div>
+                            <div class="input-field">
+                                <label for="contact-email">EMAIL ADDRESS</label>
+                                <input type="email" id="contact-email" placeholder="alex@company.com" required
+                                    autocomplete="email">
+                            </div>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="contact-subject">SUBJECT / PURPOSE</label>
+                            <input type="text" id="contact-subject"
+                                placeholder="Full-Stack Developer Role / Project Proposal" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="contact-message">TRANSMISSION MESSAGE</label>
+                            <textarea id="contact-message" rows="5"
+                                placeholder="Hi Babulu, we loved your work and would like to discuss..."
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-submit" id="btn-submit-msg">
+                            <span class="btn-glow"></span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13" />
+                                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                            </svg>
+                            Transmit Message
+                        </button>
+                        <div id="form-feedback" class="form-feedback-msg" role="alert"></div>
+                    </form>
+                </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section class="contact" id="contact">
-            <h1 class="subHeading">Contact Me</h1>
-            <p class="contact-subtext">Feel free to reach out for opportunities, collaborations, or questions.</p>
-
-            <div class="contact-details-grid">
-                <div class="contact-info-card">
-                    <span class="info-label">Email</span>
-                    <a href="mailto:babulu8520@gmail.com" class="info-value">babulu8520@gmail.com</a>
-                </div>
-                <div class="contact-info-card">
-                    <span class="info-label">Phone</span>
-                    <a href="tel:+917013887916" class="info-value">+91-7013887916</a>
-                </div>
-                <div class="contact-info-card">
-                    <span class="info-label">Location</span>
-                    <span class="info-value">Andhra Pradesh, India</span>
-                </div>
-            </div>
-
-            <div class="contact-container">
-                <form class="contact-form" id="contact-form">
-                    <input type="text" id="contact-name" placeholder="Full Name" required>
-                    <input type="email" id="contact-email" placeholder="Email Address" required>
-                    <input type="text" id="contact-subject" placeholder="Subject" required>
-                    <textarea id="contact-message" placeholder="Your Message..." rows="5" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-
-            <!-- Sticky Social Links -->
-            <div class="social-bar" id="social-bar">
-                <a href="https://www.linkedin.com/in/babuludigamarti" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-                </a>
-                <a href="https://github.com/babulu75" target="_blank" rel="noopener noreferrer" title="GitHub">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
-                </a>
-                <a href="https://instagram.com/_b._.d_babulu" target="_blank" rel="noopener noreferrer" title="Instagram">
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-                </a>
-                <a href="mailto:babulu8520@gmail.com" title="Email Babulu">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
-                </a>
-            </div>
-        </section>
     </main>
 
+    <!-- Professional Footer -->
     <footer class="site-footer">
-        <p>&copy; 2026 Babulu Digamarti &bull; All Rights Reserved.</p>
+        <div class="footer-inner">
+            <div class="footer-left">
+                <span class="footer-brand">Babulu Digamarti</span>
+                <span class="footer-copy">&copy; 2026. Built with Three.js, WebGL &amp; Modern Glassmorphism.</span>
+            </div>
+            <div class="footer-right">
+                <a href="#hero" class="back-to-top" id="btn-back-top">
+                    <span>Back to Top</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="18 15 12 9 6 15" />
+                    </svg>
+                </a>
+            </div>
+        </div>
     </footer>
 
+    <!-- CDN Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
 
